@@ -157,11 +157,7 @@ struct polynomi* summaa_polynomit(struct polynomi* nomi1, struct polynomi* nomi2
 				i1++;
 				i2++;
 			}
-		}
-		//tarkastetaan ettei kasiteltavat polynomit ole loppuneet
-		if (i0 < pituus0 && i1 < nomi1->pituus)
-		{
-			//jos ensimmäisen polynomin monomin aste on suurempi, lisataan se listaan
+			//jos ensimmaisen polynomin monomin aste on suurempi, lisataan se listaan
 			if (nomi1->jasenet[i1].aste > nomi2->jasenet[i2].aste)
 			{
 				jasenet0[i0].aste = nomi1->jasenet[i1].aste;
@@ -169,10 +165,6 @@ struct polynomi* summaa_polynomit(struct polynomi* nomi1, struct polynomi* nomi2
 				i0++;
 				i1++;
 			}
-		}
-		//tarkastetaan ettei kasiteltavat polynomit ole loppuneet
-		if (i0 < pituus0 && i2 < nomi2->pituus)
-		{
 			//jos toisen polynomin monomin aste on suurempi, lisataan se listaan
 			if (nomi1->jasenet[i1].aste < nomi2->jasenet[i2].aste)
 			{
@@ -181,7 +173,28 @@ struct polynomi* summaa_polynomit(struct polynomi* nomi1, struct polynomi* nomi2
 				i0++;
 				i2++;
 			}
+
 		}
+		else
+		{
+			//jos ensimmainen polynomi on se, joka ei ole viela loppunut, lisataan sen monomi listaan
+			if (i0 < pituus0 && i1 < nomi1->pituus)
+			{
+				jasenet0[i0].aste = nomi1->jasenet[i1].aste;
+				jasenet0[i0].kerroin = nomi1->jasenet[i1].kerroin;
+				i0++;
+				i1++;
+			}
+			//jos toinen polynomi on se, joka ei ole viela loppunut, lisataan sen monomi listaan (voisi olla else?)
+			if (i0 < pituus0 && i2 < nomi2->pituus)
+			{
+				jasenet0[i0].aste = nomi2->jasenet[i2].aste;
+				jasenet0[i0].kerroin = nomi2->jasenet[i2].kerroin;
+				i0++;
+				i2++;
+			}
+		}
+		
 	}//while paattyy
 	//varmistetaan etta molemmat summattavat polynomit tulivat taysin kasitellyiksi DEBUG?
 	if (i1 < nomi1->pituus || i2 < nomi2->pituus)
