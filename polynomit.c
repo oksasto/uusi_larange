@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "polynomit.h"
 
-//EI TESTATTU
+
 int vertaa_monomien_aste(const void* mono1, const void* mono2)
 {
 	int aste1 = ((struct monomi*)mono1)->aste;
@@ -15,7 +15,7 @@ int vertaa_monomien_aste(const void* mono1, const void* mono2)
 	//tama on parempi ainoastaan jos ehtolauseet ovat hitaita.
 	//return (aste1 < aste2) - (aste1 > aste2);
 }
-//ei testattu
+//ei testattu, muuta kuin haulikolla...
 void jarjesta_polynomi(struct polynomi* kohde)
 {
 	//monomien jarjestaminen laskevaan jarjestykseen asteen mukaan.
@@ -41,7 +41,7 @@ void jarjesta_polynomi(struct polynomi* kohde)
 			i2++;
 		}
 	}
-	kohde->pituus = i1;
+	kohde->pituus = i1 + 1;
 }
 
 void alusta_polynomi(struct polynomi* uusi) {
@@ -60,7 +60,7 @@ void lisaa_polynomiin(struct polynomi* kohde, struct monomi* lisattava) {
 	kohde->jasenet[indeksi].kerroin = lisattava->kerroin;
 }
 
-void tulosta_polynomi(struct polynomi* tulostettava) {
+void tulosta_polynomi(const struct polynomi* tulostettava) {
 	for (int i = 0; i < tulostettava->pituus; i++) {
 		printf("%+.2f", tulostettava->jasenet[i].kerroin);
 		if (tulostettava->jasenet[i].aste != 0) {
