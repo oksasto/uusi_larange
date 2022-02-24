@@ -2,12 +2,13 @@ CC=gcc
 SOURCES := $(wildcard *.c)
 OBJECTS := $(patsubst %.c,%.o,$(SOURCES))
 DEPENDS := $(patsubst %.c,%.d,$(SOURCES))
+TARGET = lagrange
 
 #compile all binary
-all:lagrange
+all:$(TARGET)
 
 #linking the executable from the object files
-lagrange: $(OBJECTS)
+$(TARGET): $(OBJECTS)
 	$(CC) -o $@ $^
 
 
@@ -24,12 +25,12 @@ lagrange: $(OBJECTS)
 	$(CC) -MMD -MP -c $< -o $@
 
 #compile all binary and run
-run: lagrange
-	./lagrange
+run: $(TARGET)
+	./$(TARGET)
 
 #remove binaries object files and dependency files
 clean:
-	rm lagrange $(OBJECTS) $(DEPENDS)
+	rm $(TARGET) $(OBJECTS) $(DEPENDS)
 
 
 
