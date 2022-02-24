@@ -1,10 +1,25 @@
 CC=gcc
-CFLAGS=-I.
+SOURCES := $(wildcard *.c)
+OBJECTS := $(patsubst %.c,%.o,$(SOURCES))
+DEPENDS := $(patsubst %.c,%.d,$(SOURCES))
+
+all:lagrange
+
+#linking the executable from the object files
+lagrange: $(OBJECTS)
+	$(CC) -o $@ $^
+
+
+#recipes for object files?
+-include $(DEPENDS)
+
+#rule for making object files
+%.o: %.c makefile
+	$(CC) -MMD -MP -c $< -o $@
 
 
 
-lagrange:main.c polynomit.o testailu.o
-	$(CC) -o lagrange main.c polynomit.c testailu.c
 
 clean:
-	rm lagrange
+	rm lagrange $(OBJECTS) $(DEPENDS)
+
