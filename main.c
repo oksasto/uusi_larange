@@ -7,6 +7,6 @@ int main()
 	srand((unsigned)time(&t));
 	
 	testaa_jarjesta_polynomi();
-	//kokeilu1();
+	kokeilu1();
 
 }

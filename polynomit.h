@@ -39,7 +39,7 @@ void alusta_polynomi(struct polynomi* uusi);
 
 void lisaa_polynomiin(struct polynomi* kohde, struct monomi* lisattava);
 
-void tulosta_polynomi(struct polynomi* tulostettava);
+void tulosta_polynomi(const struct polynomi* tulostettava);
 
 void alusta_lause(struct lause* uusi);
 
