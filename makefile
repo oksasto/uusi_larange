@@ -3,6 +3,7 @@ SOURCES := $(wildcard *.c)
 OBJECTS := $(patsubst %.c,%.o,$(SOURCES))
 DEPENDS := $(patsubst %.c,%.d,$(SOURCES))
 
+#compile all binary
 all:lagrange
 
 #linking the executable from the object files
@@ -22,10 +23,11 @@ lagrange: $(OBJECTS)
 %.o: %.c makefile
 	$(CC) -MMD -MP -c $< -o $@
 
-#run cause I am too lazy to type "./lagrange"
+#compile all binary and run
 run: lagrange
 	./lagrange
 
+#remove binaries object files and dependency files
 clean:
 	rm lagrange $(OBJECTS) $(DEPENDS)
 
