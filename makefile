@@ -17,8 +17,9 @@ lagrange: $(OBJECTS)
 %.o: %.c makefile
 	$(CC) -MMD -MP -c $< -o $@
 
-
-
+#run cause I hate to type ./lagrange
+run: lagrange
+	./lagrange
 
 clean:
 	rm lagrange $(OBJECTS) $(DEPENDS)
