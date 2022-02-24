@@ -5,7 +5,7 @@
 void testaa_jarjesta_polynomi(void)
 {
 	//viela testaamatta se etta samanmerkkisten termien summaaminen tapahtuu oikein
-	int tulosta_turhaa = 1;//true/false
+	int tulosta_turhaa = 0;//true/false
 	int testi_kerrat = 10000;
 	int aste_max = 1;
 	int kerroin_max = 500;
